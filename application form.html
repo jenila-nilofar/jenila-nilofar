@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #applicationForm {
+            background-color: #f4f4f9;
+            padding: 20px;
+            margin: 50px auto;
+            width: 60%;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section input[type="radio"] {
+            width: auto;
+            display: inline-block;
+        }
+        .form-section label {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .modal-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="applicationForm" class="modal" >
+    <div class="modal-content">
+        <span class="close-button" id="closeButton">&times;</span>
+        <h2>Visa Application Form</h2>
+        <form id="visaApplicationForm" action="/submit-application" method="POST">
+
+            <!-- Personal Details -->
+            <label for="applicantName">Full Name:</label>
+            <input type="text" id="applicantName" name="applicantName" required>
+
+            <label for="passportNumber">Passport Number:</label>
+            <input type="text" id="passportNumber" name="passportNumber" required>
+
+            <label for="visaType">Visa Type:</label>
+            <select id="visaType" name="visaType" required>
+                <option value="tourist">Tourist Visa</option>
+                <option value="business">Business Visa</option>
+                <option value="student">Student Visa</option>
+                <option value="work">Work Visa</option>
+            </select>
+
+            <label for="emailAddress">Email Address:</label>
+            <input type="email" id="emailAddress" name="emailAddress" required>
+
+            <!-- New Fields -->
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+
+            <label>Gender:</label>
+            <br>
+            <input type="radio" id="genderMale" name="gender" value="Male" required>
+            <label for="genderMale">Male</label>
+            <input type="radio" id="genderFemale" name="gender" value="Female" required>
+            <label for="genderFemale">Female</label>
+            
+
+            <!-- Additional Questions Section -->
+            <h3>Please provide below given details. Please give details if marked YES.</h3>
+
+            <div class="form-section">
+                <label>1. Have you ever been arrested/prosecuted/convicted by Court of Law of any country?*</label><br>
+                <input type="radio" id="arrestedYes" name="arrested" value="Yes" required>
+                <label for="arrestedYes">Yes</label>
+                <input type="radio" id="arrestedNo" name="arrested" value="No" required>
+                <label for="arrestedNo">No</label>
+            </div>
+
+            <div class="form-section">
+                <label>2. Have you ever been refused entry/deported by any country including India?*</label><br>
+                <input type="radio" id="refusedYes" name="refused" value="Yes" required>
+                <label for="refusedYes">Yes</label>
+                <input type="radio" id="refusedNo" name="refused" value="No" required>
+                <label for="refusedNo">No</label>
+            </div>
+
+            <div class="form-section">
+                <label>3. Have you ever been engaged in Human trafficking/Drug trafficking/Child abuse/Crime against women/Economic offense/Financial fraud?*</label><br>
+                <input type="radio" id="traffickingYes" name="trafficking" value="Yes" required>
+                <label for="traffickingYes">Yes</label>
+                <input type="radio" id="traffickingNo" name="trafficking" value="No" required>
+                <label for="traffickingNo">No</label>
+            </div>
+
+            <div class="form-section">
+                <label>4. Have you ever been engaged in Cyber crime/Terrorist activities/Sabotage/Espionage/Genocide/Political killing/Other acts of violence?*</label><br>
+                <input type="radio" id="crimeYes" name="crime" value="Yes" required>
+                <label for="crimeYes">Yes</label>
+                <input type="radio" id="crimeNo" name="crime" value="No" required>
+                <label for="crimeNo">No</label>
+            </div>
+
+            <div class="form-section">
+                <label>5. Have you ever by any means or medium expressed views that justify or glorify terrorist violence or that may encourage others to terrorist acts or other serious criminal acts?*</label><br>
+                <input type="radio" id="violenceYes" name="violence" value="Yes" required>
+                <label for="violenceYes">Yes</label>
+                <input type="radio" id="violenceNo" name="violence" value="No" required>
+                <label for="violenceNo">No</label>
+            </div>
+
+            <div class="form-section">
+                <label>6. Have you sought asylum (political or otherwise) in any country?*</label><br>
+                <input type="radio" id="asylumYes" name="asylum" value="Yes" required>
+                <label for="asylumYes">Yes</label>
+                <input type="radio" id="asylumNo" name="asylum" value="No" required>
+                <label for="asylumNo">No</label>
+            </div>
+
+            <!-- Declaration Checkbox -->
+            <div class="form-section">
+                <label>
+                    <input type="checkbox" name="declaration" required>
+                    I TEST, hereby declare that the information furnished above is correct to the best of my knowledge and belief. In case the information is found false at any stage, I am liable for legal action/deportation/blacklisting or any other action as deemed fit by the Government of India.
+                </label><br><br>
+            </div>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Modal close functionality
+    document.getElementById('closeButton').addEventListener('click', function() {
+        document.getElementById('applicationForm').style.display = 'none';
+    });
+
+    // Show the form (you can open it via JavaScript or an event)
+    document.getElementById('applicationForm').style.display = 'block';
+
+    // Show a popup when the form is submitted
+    document.getElementById('visaApplicationForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        alert('Your application has been submitted successfully!');
+    });
+</script>
+
+</body>
+</html>
